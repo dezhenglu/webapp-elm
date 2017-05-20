@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8690904eb3cbcab76eca"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "dc262297bb75ba4db1c3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -30305,23 +30305,23 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _City = __webpack_require__(299);
+	var _City = __webpack_require__(304);
 
 	var _City2 = _interopRequireDefault(_City);
 
-	var _User = __webpack_require__(300);
+	var _User = __webpack_require__(305);
 
 	var _User2 = _interopRequireDefault(_User);
 
-	var _Search = __webpack_require__(301);
+	var _Search = __webpack_require__(306);
 
 	var _Search2 = _interopRequireDefault(_Search);
 
-	var _Detail = __webpack_require__(302);
+	var _Detail = __webpack_require__(307);
 
 	var _Detail2 = _interopRequireDefault(_Detail);
 
-	var _ = __webpack_require__(303);
+	var _ = __webpack_require__(308);
 
 	var _2 = _interopRequireDefault(_);
 
@@ -30616,6 +30616,14 @@
 
 	var _HomeHeader2 = _interopRequireDefault(_HomeHeader);
 
+	var _redux = __webpack_require__(191);
+
+	var _reactRedux = __webpack_require__(182);
+
+	var _Category = __webpack_require__(299);
+
+	var _Category2 = _interopRequireDefault(_Category);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30642,7 +30650,8 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_HomeHeader2.default, null)
+	                _react2.default.createElement(_HomeHeader2.default, { cityName: this.props.userinfo.cityName }),
+	                _react2.default.createElement(_Category2.default, null)
 	            );
 	        }
 	    }]);
@@ -30652,7 +30661,18 @@
 
 	// -------------------redux react 绑定--------------------
 
-	exports.default = Home;
+
+	function mapStateToProps(state) {
+	    return {
+	        userinfo: state.userinfo
+	    };
+	}
+
+	function mapDispatchToProps(dispatch) {
+	    return {};
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
 
 /***/ }),
 /* 296 */
@@ -30708,7 +30728,7 @@
 	                    _react2.default.createElement(
 	                        'span',
 	                        null,
-	                        '\u6C88\u9633'
+	                        this.props.cityName
 	                    ),
 	                    '\xA0',
 	                    _react2.default.createElement('i', { className: 'icon-angle-down' })
@@ -30783,6 +30803,1048 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(291);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _reactDom = __webpack_require__(36);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactSwipe = __webpack_require__(300);
+
+	var _reactSwipe2 = _interopRequireDefault(_reactSwipe);
+
+	__webpack_require__(302);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Category = function (_React$Component) {
+	    _inherits(Category, _React$Component);
+
+	    function Category(props, context) {
+	        _classCallCheck(this, Category);
+
+	        var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this, props, context));
+
+	        _this.shouldComponentUpdate = _reactAddonsPureRenderMixin2.default.shouldComponentUpdate.bind(_this);
+	        _this.state = {
+	            index: 0
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Category, [{
+	        key: 'render',
+	        value: function render() {
+
+	            var opt = {
+	                auto: 2000,
+	                callback: function (index) {
+	                    this.setState({
+	                        index: index
+	                    });
+	                }.bind(this)
+	            };
+
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'home-category' },
+	                _react2.default.createElement(
+	                    _reactSwipe2.default,
+	                    { swipeOptions: opt },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'carousel-item' },
+	                        _react2.default.createElement(
+	                            'ul',
+	                            { className: 'clear-fix' },
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left jingdian' },
+	                                '\u666F\u70B9'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left ktv' },
+	                                'KTV'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left gouwu' },
+	                                '\u8D2D\u7269'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left shenghuofuwu' },
+	                                '\u751F\u6D3B\u670D\u52A1'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left jianshenyundong' },
+	                                '\u5065\u8EAB\u8FD0\u52A8'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left meifa' },
+	                                '\u7F8E\u53D1'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left qinzi' },
+	                                '\u4EB2\u5B50'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left xiaochikuaican' },
+	                                '\u5C0F\u5403\u5FEB\u9910'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left zizhucan' },
+	                                '\u81EA\u52A9\u9910'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left jiuba' },
+	                                '\u9152\u5427'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'carousel-item' },
+	                        _react2.default.createElement(
+	                            'ul',
+	                            { className: 'clear-fix' },
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left meishi' },
+	                                '\u7F8E\u98DF'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left dianying' },
+	                                '\u7535\u5F71'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left jiudian' },
+	                                '\u9152\u5E97'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left xuixianyule' },
+	                                '\u4F11\u95F2\u5A31\u4E50'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left waimai' },
+	                                '\u5916\u5356'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left huoguo' },
+	                                '\u706B\u9505'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left liren' },
+	                                '\u4E3D\u4EBA'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left dujiachuxing' },
+	                                '\u5EA6\u5047\u51FA\u884C'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left zuliaoanmo' },
+	                                '\u8DB3\u7597\u6309\u6469'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left zhoubianyou' },
+	                                '\u5468\u8FB9\u6E38'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'carousel-item' },
+	                        _react2.default.createElement(
+	                            'ul',
+	                            { className: 'clear-fix' },
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left ribencai' },
+	                                '\u65E5\u672C\u83DC'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left SPA' },
+	                                'SPA'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left jiehun' },
+	                                '\u7ED3\u5A5A'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left xuexipeixun' },
+	                                '\u5B66\u4E60\u57F9\u8BAD'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left xican' },
+	                                '\u897F\u9910'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left huochejipiao' },
+	                                '\u706B\u8F66\u673A\u7968'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left shaokao' },
+	                                '\u70E7\u70E4'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left jiazhuang' },
+	                                '\u5BB6\u88C5'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left chongwu' },
+	                                '\u5BA0\u7269'
+	                            ),
+	                            _react2.default.createElement(
+	                                'li',
+	                                { className: 'float-left quanbufenlei' },
+	                                '\u5168\u90E8\u5206\u7C7B'
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'index-container' },
+	                    _react2.default.createElement(
+	                        'ul',
+	                        null,
+	                        _react2.default.createElement('li', { className: this.state.index === 0 ? "selected" : '' }),
+	                        _react2.default.createElement('li', { className: this.state.index === 1 ? "selected" : '' }),
+	                        _react2.default.createElement('li', { className: this.state.index === 2 ? "selected" : '' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Category;
+	}(_react2.default.Component);
+
+	exports.default = Category;
+
+/***/ }),
+/* 300 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _propTypes = __webpack_require__(184);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _swipeJsIso = __webpack_require__(301);
+
+	var _swipeJsIso2 = _interopRequireDefault(_swipeJsIso);
+
+	var _objectAssign = __webpack_require__(4);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ReactSwipe = function (_Component) {
+	  _inherits(ReactSwipe, _Component);
+
+	  function ReactSwipe() {
+	    _classCallCheck(this, ReactSwipe);
+
+	    return _possibleConstructorReturn(this, (ReactSwipe.__proto__ || Object.getPrototypeOf(ReactSwipe)).apply(this, arguments));
+	  }
+
+	  _createClass(ReactSwipe, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var swipeOptions = this.props.swipeOptions;
+
+
+	      this.swipe = (0, _swipeJsIso2.default)(this.refs.container, swipeOptions);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.swipe.kill();
+	      this.swipe = void 0;
+	    }
+	  }, {
+	    key: 'next',
+	    value: function next() {
+	      this.swipe.next();
+	    }
+	  }, {
+	    key: 'prev',
+	    value: function prev() {
+	      this.swipe.prev();
+	    }
+	  }, {
+	    key: 'slide',
+	    value: function slide() {
+	      var _swipe;
+
+	      (_swipe = this.swipe).slide.apply(_swipe, arguments);
+	    }
+	  }, {
+	    key: 'getPos',
+	    value: function getPos() {
+	      return this.swipe.getPos();
+	    }
+	  }, {
+	    key: 'getNumSlides',
+	    value: function getNumSlides() {
+	      return this.swipe.getNumSlides();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          id = _props.id,
+	          className = _props.className,
+	          style = _props.style,
+	          children = _props.children;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { ref: 'container', id: id, className: 'react-swipe-container ' + className, style: style.container },
+	        _react2.default.createElement(
+	          'div',
+	          { style: style.wrapper },
+	          _react2.default.Children.map(children, function (child) {
+	            if (!child) {
+	              return null;
+	            }
+
+	            var childStyle = child.props.style ? (0, _objectAssign2.default)({}, style.child, child.props.style) : style.child;
+
+	            return _react2.default.cloneElement(child, { style: childStyle });
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ReactSwipe;
+	}(_react.Component);
+
+	ReactSwipe.propTypes = {
+	  swipeOptions: _propTypes2.default.shape({
+	    startSlide: _propTypes2.default.number,
+	    speed: _propTypes2.default.number,
+	    auto: _propTypes2.default.number,
+	    continuous: _propTypes2.default.bool,
+	    disableScroll: _propTypes2.default.bool,
+	    stopPropagation: _propTypes2.default.bool,
+	    swiping: _propTypes2.default.func,
+	    callback: _propTypes2.default.func,
+	    transitionEnd: _propTypes2.default.func
+	  }),
+	  style: _propTypes2.default.shape({
+	    container: _propTypes2.default.object,
+	    wrapper: _propTypes2.default.object,
+	    child: _propTypes2.default.object
+	  }),
+	  id: _propTypes2.default.string,
+	  className: _propTypes2.default.string
+	};
+	ReactSwipe.defaultProps = {
+	  swipeOptions: {},
+	  style: {
+	    container: {
+	      overflow: 'hidden',
+	      visibility: 'hidden',
+	      position: 'relative'
+	    },
+
+	    wrapper: {
+	      overflow: 'hidden',
+	      position: 'relative'
+	    },
+
+	    child: {
+	      float: 'left',
+	      width: '100%',
+	      position: 'relative',
+	      transitionProperty: 'transform'
+	    }
+	  },
+	  className: ''
+	};
+	exports.default = ReactSwipe;
+	module.exports = exports['default'];
+
+
+/***/ }),
+/* 301 */
+/***/ (function(module, exports) {
+
+	/*
+	 * Swipe 2.0.0
+	 * Brad Birdsall
+	 * https://github.com/thebird/Swipe
+	 * Copyright 2013-2015, MIT License
+	 *
+	*/
+
+	(function (root, factory) {
+	    if (typeof module !== 'undefined' && module.exports) {
+	        module.exports = factory();
+	    } else {
+	        root.Swipe = factory();
+	    }
+	}(this, function () {
+	  'use strict';
+
+	  return function Swipe (container, options) {
+	    // utilities
+	    var noop = function() {}; // simple no operation function
+	    var offloadFn = function(fn) { setTimeout(fn || noop, 0); }; // offload a functions execution
+
+	    // check browser capabilities
+	    var browser = {
+	      addEventListener: !!window.addEventListener,
+	      touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch,
+	      transitions: (function(temp) {
+	        var props = ['transitionProperty', 'WebkitTransition', 'MozTransition', 'OTransition', 'msTransition'];
+	        for ( var i in props ) if (temp.style[ props[i] ] !== undefined) return true;
+	        return false;
+	      })(document.createElement('swipe'))
+	    };
+
+	    // quit if no root element
+	    if (!container) return;
+	    var element = container.children[0];
+	    var slides, slidePos, width, length;
+	    options = options || {};
+	    var index = parseInt(options.startSlide, 10) || 0;
+	    var speed = options.speed || 300;
+	    options.continuous = options.continuous !== undefined ? options.continuous : true;
+
+	    function setup() {
+
+	      // cache slides
+	      slides = element.children;
+	      length = slides.length;
+
+	      // set continuous to false if only one slide
+	      if (slides.length < 2) options.continuous = false;
+
+	      //special case if two slides
+	      if (browser.transitions && options.continuous && slides.length < 3) {
+	        element.appendChild(slides[0].cloneNode(true));
+	        element.appendChild(element.children[1].cloneNode(true));
+	        slides = element.children;
+	      }
+
+	      // create an array to store current positions of each slide
+	      slidePos = new Array(slides.length);
+
+	      // determine width of each slide
+	      width = container.getBoundingClientRect().width || container.offsetWidth;
+
+	      element.style.width = (slides.length * width) + 'px';
+
+	      // stack elements
+	      var pos = slides.length;
+	      while(pos--) {
+
+	        var slide = slides[pos];
+
+	        slide.style.width = width + 'px';
+	        slide.setAttribute('data-index', pos);
+
+	        if (browser.transitions) {
+	          slide.style.left = (pos * -width) + 'px';
+	          move(pos, index > pos ? -width : (index < pos ? width : 0), 0);
+	        }
+
+	      }
+
+	      // reposition elements before and after index
+	      if (options.continuous && browser.transitions) {
+	        move(circle(index-1), -width, 0);
+	        move(circle(index+1), width, 0);
+	      }
+
+	      if (!browser.transitions) element.style.left = (index * -width) + 'px';
+
+	      container.style.visibility = 'visible';
+
+	    }
+
+	    function prev() {
+
+	      if (options.continuous) slide(index-1);
+	      else if (index) slide(index-1);
+
+	    }
+
+	    function next() {
+
+	      if (options.continuous) slide(index+1);
+	      else if (index < slides.length - 1) slide(index+1);
+
+	    }
+
+	    function circle(index) {
+
+	      // a simple positive modulo using slides.length
+	      return (slides.length + (index % slides.length)) % slides.length;
+
+	    }
+
+	    function slide(to, slideSpeed) {
+
+	      // do nothing if already on requested slide
+	      if (index == to) return;
+
+	      if (browser.transitions) {
+
+	        var direction = Math.abs(index-to) / (index-to); // 1: backward, -1: forward
+
+	        // get the actual position of the slide
+	        if (options.continuous) {
+	          var natural_direction = direction;
+	          direction = -slidePos[circle(to)] / width;
+
+	          // if going forward but to < index, use to = slides.length + to
+	          // if going backward but to > index, use to = -slides.length + to
+	          if (direction !== natural_direction) to =  -direction * slides.length + to;
+
+	        }
+
+	        var diff = Math.abs(index-to) - 1;
+
+	        // move all the slides between index and to in the right direction
+	        while (diff--) move( circle((to > index ? to : index) - diff - 1), width * direction, 0);
+
+	        to = circle(to);
+
+	        move(index, width * direction, slideSpeed || speed);
+	        move(to, 0, slideSpeed || speed);
+
+	        if (options.continuous) move(circle(to - direction), -(width * direction), 0); // we need to get the next in place
+
+	      } else {
+
+	        to = circle(to);
+	        animate(index * -width, to * -width, slideSpeed || speed);
+	        //no fallback for a circular continuous if the browser does not accept transitions
+	      }
+
+	      index = to;
+	      offloadFn(options.callback && options.callback(index, slides[index]));
+	    }
+
+	    function move(index, dist, speed) {
+
+	      translate(index, dist, speed);
+	      slidePos[index] = dist;
+
+	    }
+
+	    function translate(index, dist, speed) {
+
+	      var slide = slides[index];
+	      var style = slide && slide.style;
+
+	      if (!style) return;
+
+	      style.webkitTransitionDuration =
+	      style.MozTransitionDuration =
+	      style.msTransitionDuration =
+	      style.OTransitionDuration =
+	      style.transitionDuration = speed + 'ms';
+
+	      style.webkitTransform = 'translate(' + dist + 'px,0)' + 'translateZ(0)';
+	      style.msTransform =
+	      style.MozTransform =
+	      style.OTransform = 'translateX(' + dist + 'px)';
+
+	    }
+
+	    function animate(from, to, speed) {
+
+	      // if not an animation, just reposition
+	      if (!speed) {
+
+	        element.style.left = to + 'px';
+	        return;
+
+	      }
+
+	      var start = +new Date();
+
+	      var timer = setInterval(function() {
+
+	        var timeElap = +new Date() - start;
+
+	        if (timeElap > speed) {
+
+	          element.style.left = to + 'px';
+
+	          if (delay) begin();
+
+	          options.transitionEnd && options.transitionEnd.call(event, index, slides[index]);
+
+	          clearInterval(timer);
+	          return;
+
+	        }
+
+	        element.style.left = (( (to - from) * (Math.floor((timeElap / speed) * 100) / 100) ) + from) + 'px';
+
+	      }, 4);
+
+	    }
+
+	    // setup auto slideshow
+	    var delay = options.auto || 0;
+	    var interval;
+
+	    function begin() {
+
+	      interval = setTimeout(next, delay);
+
+	    }
+
+	    function stop() {
+
+	      delay = 0;
+	      clearTimeout(interval);
+
+	    }
+
+
+	    // setup initial vars
+	    var start = {};
+	    var delta = {};
+	    var isScrolling;
+
+	    // setup event capturing
+	    var events = {
+
+	      handleEvent: function(event) {
+
+	        switch (event.type) {
+	          case 'touchstart': this.start(event); break;
+	          case 'touchmove': this.move(event); break;
+	          case 'touchend': offloadFn(this.end(event)); break;
+	          case 'webkitTransitionEnd':
+	          case 'msTransitionEnd':
+	          case 'oTransitionEnd':
+	          case 'otransitionend':
+	          case 'transitionend': offloadFn(this.transitionEnd(event)); break;
+	          case 'resize': offloadFn(setup); break;
+	        }
+
+	        if (options.stopPropagation) event.stopPropagation();
+
+	      },
+	      start: function(event) {
+
+	        var touches = event.touches[0];
+
+	        // measure start values
+	        start = {
+
+	          // get initial touch coords
+	          x: touches.pageX,
+	          y: touches.pageY,
+
+	          // store time to determine touch duration
+	          time: +new Date()
+
+	        };
+
+	        // used for testing first move event
+	        isScrolling = undefined;
+
+	        // reset delta and end measurements
+	        delta = {};
+
+	        // attach touchmove and touchend listeners
+	        element.addEventListener('touchmove', this, false);
+	        element.addEventListener('touchend', this, false);
+
+	      },
+	      move: function(event) {
+
+	        // ensure swiping with one touch and not pinching
+	        if ( event.touches.length > 1 || event.scale && event.scale !== 1) return;
+
+	        if (options.disableScroll) event.preventDefault();
+
+	        var touches = event.touches[0];
+
+	        // measure change in x and y
+	        delta = {
+	          x: touches.pageX - start.x,
+	          y: touches.pageY - start.y
+	        };
+
+	        // determine if scrolling test has run - one time test
+	        if ( typeof isScrolling == 'undefined') {
+	          isScrolling = !!( isScrolling || Math.abs(delta.x) < Math.abs(delta.y) );
+	        }
+
+	        // if user is not trying to scroll vertically
+	        if (!isScrolling) {
+
+	          // prevent native scrolling
+	          event.preventDefault();
+
+	          // stop slideshow
+	          stop();
+
+	          // increase resistance if first or last slide
+	          if (options.continuous) { // we don't add resistance at the end
+
+	            translate(circle(index-1), delta.x + slidePos[circle(index-1)], 0);
+	            translate(index, delta.x + slidePos[index], 0);
+	            translate(circle(index+1), delta.x + slidePos[circle(index+1)], 0);
+
+	          } else {
+
+	            delta.x =
+	              delta.x /
+	                ( (!index && delta.x > 0 ||         // if first slide and sliding left
+	                  index == slides.length - 1 &&     // or if last slide and sliding right
+	                  delta.x < 0                       // and if sliding at all
+	                ) ?
+	                ( Math.abs(delta.x) / width + 1 )      // determine resistance level
+	                : 1 );                                 // no resistance if false
+
+	            // translate 1:1
+	            translate(index-1, delta.x + slidePos[index-1], 0);
+	            translate(index, delta.x + slidePos[index], 0);
+	            translate(index+1, delta.x + slidePos[index+1], 0);
+	          }
+	          options.swiping && options.swiping(-delta.x / width);
+
+	        }
+
+	      },
+	      end: function(event) {
+
+	        // measure duration
+	        var duration = +new Date() - start.time;
+
+	        // determine if slide attempt triggers next/prev slide
+	        var isValidSlide =
+	              Number(duration) < 250 &&         // if slide duration is less than 250ms
+	              Math.abs(delta.x) > 20 ||         // and if slide amt is greater than 20px
+	              Math.abs(delta.x) > width/2;      // or if slide amt is greater than half the width
+
+	        // determine if slide attempt is past start and end
+	        var isPastBounds =
+	              !index && delta.x > 0 ||                      // if first slide and slide amt is greater than 0
+	              index == slides.length - 1 && delta.x < 0;    // or if last slide and slide amt is less than 0
+
+	        if (options.continuous) isPastBounds = false;
+
+	        // determine direction of swipe (true:right, false:left)
+	        var direction = delta.x < 0;
+
+	        // if not scrolling vertically
+	        if (!isScrolling) {
+
+	          if (isValidSlide && !isPastBounds) {
+
+	            if (direction) {
+
+	              if (options.continuous) { // we need to get the next in this direction in place
+
+	                move(circle(index-1), -width, 0);
+	                move(circle(index+2), width, 0);
+
+	              } else {
+	                move(index-1, -width, 0);
+	              }
+
+	              move(index, slidePos[index]-width, speed);
+	              move(circle(index+1), slidePos[circle(index+1)]-width, speed);
+	              index = circle(index+1);
+
+	            } else {
+	              if (options.continuous) { // we need to get the next in this direction in place
+
+	                move(circle(index+1), width, 0);
+	                move(circle(index-2), -width, 0);
+
+	              } else {
+	                move(index+1, width, 0);
+	              }
+
+	              move(index, slidePos[index]+width, speed);
+	              move(circle(index-1), slidePos[circle(index-1)]+width, speed);
+	              index = circle(index-1);
+
+	            }
+
+	            options.callback && options.callback(index, slides[index]);
+
+	          } else {
+
+	            if (options.continuous) {
+
+	              move(circle(index-1), -width, speed);
+	              move(index, 0, speed);
+	              move(circle(index+1), width, speed);
+
+	            } else {
+
+	              move(index-1, -width, speed);
+	              move(index, 0, speed);
+	              move(index+1, width, speed);
+	            }
+
+	          }
+
+	        }
+	        
+	        delay = options.auto || 0;
+
+	        // kill touchmove and touchend event listeners until touchstart called again
+	        element.removeEventListener('touchmove', events, false);
+	        element.removeEventListener('touchend', events, false);
+
+	      },
+	      transitionEnd: function(event) {
+
+	        if (parseInt(event.target.getAttribute('data-index'), 10) == index) {
+
+	          if (delay) begin();
+
+	          options.transitionEnd && options.transitionEnd.call(event, index, slides[index]);
+
+	        }
+
+	      }
+
+	    };
+
+	    // trigger setup
+	    setup();
+
+	    // start auto slideshow if applicable
+	    if (delay) begin();
+
+
+	    // add event listeners
+	    if (browser.addEventListener) {
+
+	      // set touchstart event on element
+	      if (browser.touch) element.addEventListener('touchstart', events, false);
+
+	      if (browser.transitions) {
+	        element.addEventListener('webkitTransitionEnd', events, false);
+	        element.addEventListener('msTransitionEnd', events, false);
+	        element.addEventListener('oTransitionEnd', events, false);
+	        element.addEventListener('otransitionend', events, false);
+	        element.addEventListener('transitionend', events, false);
+	      }
+
+	      // set resize event on window
+	      window.addEventListener('resize', events, false);
+
+	    } else {
+
+	      window.onresize = function () { setup(); }; // to play nice with old IE
+
+	    }
+
+	    // expose the Swipe API
+	    return {
+	      setup: function() {
+
+	        setup();
+
+	      },
+	      slide: function(to, speed) {
+
+	        // cancel slideshow
+	        stop();
+
+	        slide(to, speed);
+
+	      },
+	      prev: function() {
+
+	        // cancel slideshow
+	        stop();
+
+	        prev();
+
+	      },
+	      next: function() {
+
+	        // cancel slideshow
+	        stop();
+
+	        next();
+
+	      },
+	      stop: function() {
+
+	        // cancel slideshow
+	        stop();
+
+	      },
+	      getPos: function() {
+
+	        // return current index position
+	        return index;
+
+	      },
+	      getNumSlides: function() {
+
+	        // return total number of slides
+	        return length;
+	      },
+	      kill: function() {
+
+	        // cancel slideshow
+	        stop();
+
+	        // reset element
+	        element.style.width = '';
+	        element.style.left = '';
+
+	        // reset slides
+	        var pos = slides.length;
+	        while(pos--) {
+
+	          var slide = slides[pos];
+	          slide.style.width = '';
+	          slide.style.left = '';
+
+	          if (browser.transitions) translate(pos, 0, 0);
+	        }
+
+	        // removed event listeners
+	        if (browser.addEventListener) {
+
+	          // remove current event listeners
+	          element.removeEventListener('touchstart', events, false);
+	          element.removeEventListener('webkitTransitionEnd', events, false);
+	          element.removeEventListener('msTransitionEnd', events, false);
+	          element.removeEventListener('oTransitionEnd', events, false);
+	          element.removeEventListener('otransitionend', events, false);
+	          element.removeEventListener('transitionend', events, false);
+	          window.removeEventListener('resize', events, false);
+
+	        } else {
+	          window.onresize = null;
+	        }
+	      }
+	    };
+	  };
+	}));
+
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(303);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(282)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(303, function() {
+				var newContent = __webpack_require__(303);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(281)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "#home-category {\n  background-color: #fff;\n  padding: 10px;\n}\n#home-category .carousel-item ul {\n  width: 100%;\n  height: auto;\n}\n#home-category .carousel-item li {\n  display: block;\n  list-style: none;\n  width: 20%;\n  background-repeat: no-repeat;\n  background-size: 50px auto;\n  background-position: top center;\n  text-align: center;\n  padding-top: 50px;\n  color: #666;\n  font-size: 14px;\n}\n#home-category .carousel-item li.jingdian {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224203170-1528315005.png);\n}\n#home-category .carousel-item li.ktv {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224309185-1519181081.png);\n}\n#home-category .carousel-item li.gouwu {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224150045-30962603.png);\n}\n#home-category .carousel-item li.shenghuofuwu {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224237513-176380794.png);\n}\n#home-category .carousel-item li.jianshenyundong {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224256732-145714491.png);\n}\n#home-category .carousel-item li.meifa {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224222123-643915682.png);\n}\n#home-category .carousel-item li.qinzi {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224229451-475201730.png);\n}\n#home-category .carousel-item li.xiaochikuaican {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224244545-1583700011.png);\n}\n#home-category .carousel-item li.zizhucan {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224113560-1012968440.png);\n}\n#home-category .carousel-item li.jiuba {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224210732-490953965.png);\n}\n#home-category .carousel-item li.meishi {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224409107-2018112337.png);\n}\n#home-category .carousel-item li.dianying {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224033873-290248113.png);\n}\n#home-category .carousel-item li.jiudian {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224051513-2057698989.png);\n}\n#home-category .carousel-item li.xuixianyule {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224129076-2058206915.png);\n}\n#home-category .carousel-item li.waimai {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224121920-424129491.png);\n}\n#home-category .carousel-item li.huoguo {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224046342-1896393176.png);\n}\n#home-category .carousel-item li.liren {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224057670-257626875.png);\n}\n#home-category .carousel-item li.dujiachuxing {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224040842-2050913385.png);\n}\n#home-category .carousel-item li.zuliaoanmo {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224144060-1009120401.png);\n}\n#home-category .carousel-item li.zhoubianyou {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224138123-197921773.png);\n}\n#home-category .carousel-item li.ribencai {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224354951-1102565687.png);\n}\n#home-category .carousel-item li.SPA {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224419998-1442330810.png);\n}\n#home-category .carousel-item li.jiehun {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224340545-213074048.png);\n}\n#home-category .carousel-item li.xuexipeixun {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224415013-114294334.png);\n}\n#home-category .carousel-item li.xican {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224409107-2018112337.png);\n}\n#home-category .carousel-item li.huochejipiao {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224323467-1926976043.png);\n}\n#home-category .carousel-item li.shaokao {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224402576-1611337354.png);\n}\n#home-category .carousel-item li.jiazhuang {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224333185-1082315113.png);\n}\n#home-category .carousel-item li.chongwu {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224315779-157132725.png);\n}\n#home-category .carousel-item li.quanbufenlei {\n  background-image: url(http://images2015.cnblogs.com/blog/138012/201610/138012-20161022224348467-646596364.png);\n}\n#home-category .index-container {\n  margin-top: 10px;\n}\n#home-category .index-container ul {\n  width: 100%;\n  height: auto;\n  text-align: center;\n}\n#home-category .index-container li {\n  list-style: none;\n  display: inline-block;\n  height: 8px;\n  width: 8px;\n  border-radius: 4px;\n  background-color: #ccc;\n  margin: 0 3px;\n}\n#home-category .index-container li.selected {\n  background-color: #e9203d;\n}\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -30838,7 +31900,7 @@
 	module.exports = City;
 
 /***/ }),
-/* 300 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30898,7 +31960,7 @@
 	module.exports = User;
 
 /***/ }),
-/* 301 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30958,7 +32020,7 @@
 	module.exports = Search;
 
 /***/ }),
-/* 302 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31018,7 +32080,7 @@
 	module.exports = Detail;
 
 /***/ }),
-/* 303 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
