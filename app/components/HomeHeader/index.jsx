@@ -12,7 +12,7 @@ class HomeHeader extends React.Component {
         return (
             <div id="home-header" className="clear-fix">
                 <div className="home-header-left float-left">
-                    <span>沈阳</span>
+                    <span>{this.props.cityName}</span>
                     &nbsp;
                     <i className="icon-angle-down"></i>
                 </div>    
