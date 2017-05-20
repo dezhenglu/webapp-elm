@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7e37d681987e9b0f5c04"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8f63b600864f293d0342"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -30305,23 +30305,23 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _City = __webpack_require__(313);
+	var _City = __webpack_require__(322);
 
 	var _City2 = _interopRequireDefault(_City);
 
-	var _User = __webpack_require__(314);
+	var _User = __webpack_require__(323);
 
 	var _User2 = _interopRequireDefault(_User);
 
-	var _Search = __webpack_require__(315);
+	var _Search = __webpack_require__(324);
 
 	var _Search2 = _interopRequireDefault(_Search);
 
-	var _Detail = __webpack_require__(316);
+	var _Detail = __webpack_require__(325);
 
 	var _Detail2 = _interopRequireDefault(_Detail);
 
-	var _ = __webpack_require__(317);
+	var _ = __webpack_require__(326);
 
 	var _2 = _interopRequireDefault(_);
 
@@ -30628,6 +30628,10 @@
 
 	var _Ad2 = _interopRequireDefault(_Ad);
 
+	var _List = __webpack_require__(313);
+
+	var _List2 = _interopRequireDefault(_List);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30657,7 +30661,8 @@
 	                _react2.default.createElement(_HomeHeader2.default, { cityName: this.props.userinfo.cityName }),
 	                _react2.default.createElement(_Category2.default, null),
 	                _react2.default.createElement('div', { style: { height: '15px' } }),
-	                _react2.default.createElement(_Ad2.default, null)
+	                _react2.default.createElement(_Ad2.default, null),
+	                _react2.default.createElement(_List2.default, { cityName: this.props.userinfo.cityName })
 	            );
 	        }
 	    }]);
@@ -33766,6 +33771,442 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(291);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _home = __webpack_require__(305);
+
+	var _index = __webpack_require__(314);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	__webpack_require__(320);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var List = function (_React$Component) {
+	    _inherits(List, _React$Component);
+
+	    function List(props, context) {
+	        _classCallCheck(this, List);
+
+	        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props, context));
+
+	        _this.shouldComponentUpdate = _reactAddonsPureRenderMixin2.default.shouldComponentUpdate.bind(_this);
+	        _this.state = {
+	            // data: [],
+	            data: [{
+	                img: 'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016201638030-473660627.png',
+	                title: '汉堡大大',
+	                subTitle: '叫我汉堡大大，还你多彩口味',
+	                price: '28',
+	                distance: '120m',
+	                mumber: '389'
+	            }, {
+	                img: 'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016201645858-1342445625.png',
+	                title: '北京开源饭店',
+	                subTitle: '[望京]自助晚餐',
+	                price: '98',
+	                distance: '140m',
+	                mumber: '689'
+	            }, {
+	                img: 'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016201652952-1050532278.png',
+	                title: '服装定制',
+	                subTitle: '原价xx元，现价xx元，可修改一次',
+	                price: '1980',
+	                distance: '160',
+	                mumber: '106'
+	            }, {
+	                img: 'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016201700186-1351787273.png',
+	                title: '婚纱摄影',
+	                subTitle: '免费试穿，拍照留念',
+	                price: '2899',
+	                distance: '160',
+	                mumber: '58'
+	            }, {
+	                img: 'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016201708124-1116595594.png',
+	                title: '麻辣串串烧',
+	                subTitle: '双人免费套餐等你抢购',
+	                price: '0',
+	                distance: '160',
+	                mumber: '1426'
+	            }],
+	            hasMore: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(List, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h2',
+	                    { className: 'home-list-title' },
+	                    '\u731C\u4F60\u559C\u6B22'
+	                ),
+	                this.state.data.length ? _react2.default.createElement(_index2.default, { data: this.state.data }) : _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    '\u52A0\u8F7D\u4E2D...'
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
+	        // 获取首页数据
+	        // this.loadFirstPageData()
+
+	        // 获取首屏数据
+
+	    }, {
+	        key: 'loadFirstPageData',
+	        value: function loadFirstPageData() {
+	            var cityName = this.props.cityName;
+	            var result = (0, _home.getListData)(cityName, 0);
+	            // console.log(result)
+	            this.resultHandle(result);
+	        }
+	        // 数据处理
+
+	    }, {
+	        key: 'resultHandle',
+	        value: function resultHandle(result) {
+	            var _this2 = this;
+
+	            result.then(function (res) {
+	                return res.json();
+	            }).then(function (json) {
+	                // console.log(json)
+	                var hasMore = json.hasMore;
+	                var data = json.data;
+	                // 存储
+	                _this2.setState({
+	                    hasMore: hasMore,
+	                    data: data
+	                });
+	            });
+	        }
+	    }]);
+
+	    return List;
+	}(_react2.default.Component);
+
+	exports.default = List;
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(291);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _index = __webpack_require__(315);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	__webpack_require__(318);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var List = function (_React$Component) {
+	    _inherits(List, _React$Component);
+
+	    function List(props, context) {
+	        _classCallCheck(this, List);
+
+	        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props, context));
+
+	        _this.shouldComponentUpdate = _reactAddonsPureRenderMixin2.default.shouldComponentUpdate.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(List, [{
+	        key: 'render',
+	        value: function render() {
+	            var data = this.props.data;
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                data.map(function (item, index) {
+	                    return _react2.default.createElement(_index2.default, { key: index, data: item });
+	                })
+	            );
+	        }
+	    }]);
+
+	    return List;
+	}(_react2.default.Component);
+
+	exports.default = List;
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(291);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	__webpack_require__(316);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Item = function (_React$Component) {
+	    _inherits(Item, _React$Component);
+
+	    function Item(props, context) {
+	        _classCallCheck(this, Item);
+
+	        var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props, context));
+
+	        _this.shouldComponentUpdate = _reactAddonsPureRenderMixin2.default.shouldComponentUpdate.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Item, [{
+	        key: 'render',
+	        value: function render() {
+	            var data = this.props.data;
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'list-item clear-fix' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item-img-container float-left' },
+	                    _react2.default.createElement('img', { src: data.img, alt: data.title })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item-content' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'item-title-container clear-fix' },
+	                        _react2.default.createElement(
+	                            'h3',
+	                            { className: 'float-left' },
+	                            data.title
+	                        ),
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'float-right' },
+	                            data.distance
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        { className: 'item-sub-title' },
+	                        data.subTitle
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'item-price-container clear-fix' },
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'price float-left' },
+	                            '\uFFE5',
+	                            data.price
+	                        ),
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'mumber float-right' },
+	                            '\u5DF2\u552E',
+	                            data.mumber
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Item;
+	}(_react2.default.Component);
+
+	exports.default = Item;
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(317);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(282)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(317, function() {
+				var newContent = __webpack_require__(317);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(281)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".list-item {\n  width: 100%;\n  padding: 10px 10px 0 10px;\n  border-bottom: 1px solid #f1f1f1;\n  background-color: #fff;\n}\n.list-item .item-img-container {\n  width: 120px;\n  height: 90px;\n}\n.list-item .item-img-container img {\n  width: 100%;\n  height: 100%;\n}\n.list-item .item-content {\n  margin-left: 100px;\n  padding-left: 30px;\n}\n.list-item .item-content .item-title-container {\n  height: 25px;\n}\n.list-item .item-content .item-title-container h3 {\n  font-size: 18px;\n  line-height: 1;\n  color: #333;\n}\n.list-item .item-content .item-title-container span {\n  font-size: 13px;\n  line-height: 18px;\n  color: #999;\n}\n.list-item .item-content .item-sub-title {\n  font-size: 14px;\n  color: #666;\n  line-height: 1.5;\n}\n.list-item .item-content .item-price-container {\n  margin-top: 10px;\n}\n.list-item .item-content .item-price-container .price {\n  font-size: 18px;\n  line-height: 1;\n  font-weight: 900;\n  color: #e9203d;\n}\n.list-item .item-content .item-price-container .mumber {\n  font-size: 13px;\n  line-height: 18px;\n  color: #999;\n}\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(319);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(282)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(319, function() {
+				var newContent = __webpack_require__(319);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(281)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(321);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(282)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(321, function() {
+				var newContent = __webpack_require__(321);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(281)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".home-list-title {\n  font-size: 16px;\n  color: #666;\n  margin: 10px 25px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -33821,7 +34262,7 @@
 	module.exports = City;
 
 /***/ }),
-/* 314 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33881,7 +34322,7 @@
 	module.exports = User;
 
 /***/ }),
-/* 315 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33941,7 +34382,7 @@
 	module.exports = Search;
 
 /***/ }),
-/* 316 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34001,7 +34442,7 @@
 	module.exports = Detail;
 
 /***/ }),
-/* 317 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
