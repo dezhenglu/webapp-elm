@@ -2,6 +2,7 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { getListData } from '../../../fetch/home/home.js'
 import ListComponent from '../../../components/List/index.jsx'
+import LoadMore from '../../../components/LoadMore/index.jsx'
 import './style.less'
 
 class List extends React.Component {
@@ -52,7 +53,11 @@ class List extends React.Component {
             //         mumber: '1426'
             //     }
             // ],
-            hasMore: false
+            hasMore: false, //记录当前状态下还有没有更多的数据可供加载
+            isLoadingMore: false, //记录当前状态下，是’加载中...‘ 还是‘点击加载更多’
+            page: 1 //下一页的页码
+
+
         };
     }
     render() {
@@ -64,7 +69,11 @@ class List extends React.Component {
                     ? <ListComponent data={this.state.data}/>
                     : <div>加载中...</div>
                 }
-                {/* loadmore */}
+                {
+                    this.state.hasMore
+                    ? <LoadMore page={this.state.page} isLoadingMore={this.state.isLoadingMore} loadMoreDataFn={this.loadMoreData.bind(this)}/>
+                    : ''
+                }
             </div>
         )
     }
@@ -79,8 +88,28 @@ class List extends React.Component {
         // console.log(result)
         this.resultHandle(result)
     }
+    // 加载更多数据
+    loadMoreData() {
+        // 记录状态
+        this.setState({
+            isLoadingMore: true
+        },function() {
+            const cityName = this.props.cityName
+            const page = this.state.page //下一页的页码
+            const result = getListData(cityName, page)
+            this.resultHandle(
+                result,
+                function() {
+                    this.setState({
+                        page: page + 1,
+                        isLoadingMore: false
+                    });
+                }
+            )
+        })       
+    }
     // 数据处理
-    resultHandle(result) {
+    resultHandle(result, callback) {
         result.then(res => {
             return res.json()
         }).then(json => {
@@ -90,11 +119,10 @@ class List extends React.Component {
             // 存储
             this.setState({
                 hasMore: hasMore,
-                data: data 
-            });
+                data: this.state.data.concat(data)
+            },callback);
         })
     }
 }
-
 
 export default List
