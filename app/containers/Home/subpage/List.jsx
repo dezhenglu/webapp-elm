@@ -56,8 +56,6 @@ class List extends React.Component {
             hasMore: false, //记录当前状态下还有没有更多的数据可供加载
             isLoadingMore: false, //记录当前状态下，是’加载中...‘ 还是‘点击加载更多’
             page: 1 //下一页的页码
-
-
         };
     }
     render() {
