@@ -16,10 +16,12 @@ class Home extends React.Component {
         return (
             <div>
                 <HomeHeader cityName={this.props.userinfo.cityName}/>
-                <Category/>
-                <div style={{ height: '15px' }}></div>
-                <Ad/>
-                <List cityName={this.props.userinfo.cityName}/>
+                <div style={{ marginTop: '49px' }}>
+                    <Category/>
+                    <div style={{ height: '15px' }}></div>
+                    <Ad/>
+                    <List cityName={this.props.userinfo.cityName}/>
+                </div>
             </div>
         )
     }
