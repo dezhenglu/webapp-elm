@@ -15,10 +15,12 @@ class Search extends React.Component {
         return (
             <div>
                 <SearchHeader keyword={params.keyword}/>
-                <SearchList 
-                    cityName={this.props.userinfo.cityName} 
-                    keyword={params.keyword}
-                    category={params.category}/>
+                <div style={{ marginTop: '49px' }}>
+                    <SearchList 
+                        cityName={this.props.userinfo.cityName} 
+                        keyword={params.keyword}
+                        category={params.category}/>
+                </div>
             </div>
         )
     }
