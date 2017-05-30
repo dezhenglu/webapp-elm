@@ -1,7 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import SearchHeader from '../../components/SearchHeader'
-import List from './subpage/List.jsx'
+import SearchList from './subpage/SearchList.jsx'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -15,7 +15,7 @@ class Search extends React.Component {
         return (
             <div>
                 <SearchHeader keyword={params.keyword}/>
-                <List 
+                <SearchList 
                     cityName={this.props.userinfo.cityName} 
                     keyword={params.keyword}
                     category={params.category}/>
